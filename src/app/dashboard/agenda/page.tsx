@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Calendar, momentLocalizer, Views } from "react-big-calendar"
 import moment from "moment"
 import "react-big-calendar/lib/css/react-big-calendar.css"
@@ -11,6 +11,12 @@ import { Badge } from "@/components/ui/badge"
 const localizer = momentLocalizer(moment)
 
 export default function AgendaPage() {
+  const [isMounted, setIsMounted] = useState(false)
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
   const [events, setEvents] = useState(
     upcomingAgenda.map(agenda => {
       const [startHour, endHour] = agenda.time.split(" - ")
@@ -67,16 +73,18 @@ export default function AgendaPage() {
       <Card>
         <CardContent className="p-6">
           <div className="h-[600px]">
-            <Calendar
-              localizer={localizer}
-              events={events}
-              startAccessor="start"
-              endAccessor="end"
-              style={{ height: "100%" }}
-              eventPropGetter={eventStyleGetter}
-              views={['month', 'week', 'day']}
-              defaultView={Views.MONTH}
-            />
+            {isMounted && (
+              <Calendar
+                localizer={localizer}
+                events={events}
+                startAccessor="start"
+                endAccessor="end"
+                style={{ height: "100%" }}
+                eventPropGetter={eventStyleGetter}
+                views={['month', 'week', 'day']}
+                defaultView={Views.MONTH}
+              />
+            )}
           </div>
         </CardContent>
       </Card>

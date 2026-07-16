@@ -149,7 +149,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   return (
                     <SidebarMenuItem key={item.title}>
                       <SidebarMenuButton 
-                        asChild 
+                        render={<Link href={item.url} className="flex items-center gap-3 w-full px-3 py-2 rounded-xl" />}
                         isActive={isActive} 
                         tooltip={item.title}
                         className={`w-full transition-all duration-200 ${
@@ -158,10 +158,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                             : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
                         }`}
                       >
-                        <Link href={item.url} className="flex items-center gap-3 w-full px-3 py-2 rounded-xl">
-                          <item.icon className={`h-5 w-5 shrink-0 ${isActive ? 'text-blue-600' : 'text-slate-400'}`} />
-                          {!isCollapsed && <span className="text-sm">{item.title}</span>}
-                        </Link>
+                        <item.icon className={`h-5 w-5 shrink-0 ${isActive ? 'text-blue-600' : 'text-slate-400'}`} />
+                        {!isCollapsed && <span className="text-sm">{item.title}</span>}
                       </SidebarMenuButton>
                     </SidebarMenuItem>
                   )

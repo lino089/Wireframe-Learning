@@ -2,6 +2,7 @@ import { AppSidebar } from "@/components/app-sidebar"
 import { SidebarProvider, SidebarInset, SidebarTrigger } from "@/components/ui/sidebar"
 import { Separator } from "@/components/ui/separator"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import Link from "next/link"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,6 +10,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
+  DropdownMenuGroup,
 } from "@/components/ui/dropdown-menu"
 import { Bell, Search, Sun, Moon } from "lucide-react"
 import { Input } from "@/components/ui/input"
@@ -56,31 +58,35 @@ export default function DashboardLayout({
             
             <Separator orientation="vertical" className="h-6 bg-slate-200" />
 
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <button className="flex items-center gap-2.5 outline-none hover:opacity-90 transition-opacity">
-                  <Avatar className="h-9 w-9 ring-2 ring-slate-100 shadow-sm">
-                    <AvatarImage src="https://api.dicebear.com/7.x/avataaars/svg?seed=Admin" alt="Admin" />
-                    <AvatarFallback>AD</AvatarFallback>
-                  </Avatar>
-                  <div className="hidden lg:flex flex-col items-start text-xs text-left leading-none">
-                    <span className="font-bold text-slate-800">Budi Santoso</span>
-                    <span className="text-[10px] text-slate-500 mt-1 uppercase font-semibold">Admin / Wakasek</span>
-                  </div>
-                </button>
+             <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center gap-2.5 outline-none hover:opacity-90 transition-opacity cursor-pointer">
+                <Avatar className="h-9 w-9 ring-2 ring-slate-100 shadow-sm">
+                  <AvatarImage src="https://api.dicebear.com/7.x/avataaars/svg?seed=Admin" alt="Admin" />
+                  <AvatarFallback>AD</AvatarFallback>
+                </Avatar>
+                <div className="hidden lg:flex flex-col items-start text-xs text-left leading-none">
+                  <span className="font-bold text-slate-800">Budi Santoso</span>
+                  <span className="text-[10px] text-slate-500 mt-1 uppercase font-semibold">Admin / Wakasek</span>
+                </div>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-56 rounded-xl p-1.5 shadow-lg border-slate-200">
-                <DropdownMenuLabel className="text-xs text-slate-400 px-2 py-1.5 font-bold uppercase tracking-wider">Simulasi Peran</DropdownMenuLabel>
+                <DropdownMenuGroup>
+                  <DropdownMenuLabel className="text-xs text-slate-400 px-2 py-1.5 font-bold uppercase tracking-wider">Simulasi Peran</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem className="font-semibold text-blue-600 bg-blue-50/50 rounded-lg">
+                    Admin / Wakasek
+                  </DropdownMenuItem>
+                  <DropdownMenuItem className="rounded-lg">Kepala Sekolah</DropdownMenuItem>
+                  <DropdownMenuItem className="rounded-lg">Guru</DropdownMenuItem>
+                  <DropdownMenuItem className="rounded-lg">Siswa / Organisasi</DropdownMenuItem>
+                  <DropdownMenuItem className="rounded-lg">Teknisi / PJ Ruangan</DropdownMenuItem>
+                </DropdownMenuGroup>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem className="font-semibold text-blue-600 bg-blue-50/50 rounded-lg">
-                  Admin / Wakasek
-                </DropdownMenuItem>
-                <DropdownMenuItem className="rounded-lg">Kepala Sekolah</DropdownMenuItem>
-                <DropdownMenuItem className="rounded-lg">Guru</DropdownMenuItem>
-                <DropdownMenuItem className="rounded-lg">Siswa / Organisasi</DropdownMenuItem>
-                <DropdownMenuItem className="rounded-lg">Teknisi / PJ Ruangan</DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem className="text-red-600 font-medium rounded-lg">Keluar</DropdownMenuItem>
+                <Link href="/login" className="w-full">
+                  <DropdownMenuItem className="text-red-600 font-medium rounded-lg cursor-pointer">
+                    Keluar
+                  </DropdownMenuItem>
+                </Link>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>

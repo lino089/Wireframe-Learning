@@ -1,5 +1,6 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { statCards, upcomingAgenda, roomStatus, activityLogs } from "@/data/dummy"
 import { Badge } from "@/components/ui/badge"
@@ -27,14 +28,20 @@ const containerVariants = {
       staggerChildren: 0.1
     }
   }
-}
+} as const
 
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 24 } }
-}
+  show: { opacity: 1, y: 0, transition: { type: "spring" as const, stiffness: 300, damping: 24 } }
+} as const
 
 export default function DashboardPage() {
+  const [isMounted, setIsMounted] = useState(false)
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
   return (
     <motion.div 
       variants={containerVariants}
@@ -102,41 +109,43 @@ export default function DashboardPage() {
           </CardHeader>
           <CardContent className="pl-2">
             <div className="h-[300px] w-full">
-              <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={chartData}>
-                  <defs>
-                    <linearGradient id="colorUsage" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#2563EB" stopOpacity={0.2}/>
-                      <stop offset="95%" stopColor="#2563EB" stopOpacity={0}/>
-                    </linearGradient>
-                  </defs>
-                  <XAxis
-                    dataKey="name"
-                    stroke="#94a3b8"
-                    fontSize={11}
-                    tickLine={false}
-                    axisLine={false}
-                  />
-                  <YAxis
-                    stroke="#94a3b8"
-                    fontSize={11}
-                    tickLine={false}
-                    axisLine={false}
-                    tickFormatter={(value) => `${value}%`}
-                  />
-                  <Tooltip
-                    contentStyle={{ borderRadius: "12px", border: "1px solid #e2e8f0", boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.05)" }}
-                  />
-                  <Area
-                    type="monotone"
-                    dataKey="usage"
-                    stroke="#2563EB"
-                    strokeWidth={2}
-                    fillOpacity={1}
-                    fill="url(#colorUsage)"
-                  />
-                </AreaChart>
-              </ResponsiveContainer>
+              {isMounted && (
+                <ResponsiveContainer width="100%" height="100%">
+                  <AreaChart data={chartData}>
+                    <defs>
+                      <linearGradient id="colorUsage" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="5%" stopColor="#2563EB" stopOpacity={0.2}/>
+                        <stop offset="95%" stopColor="#2563EB" stopOpacity={0}/>
+                      </linearGradient>
+                    </defs>
+                    <XAxis
+                      dataKey="name"
+                      stroke="#94a3b8"
+                      fontSize={11}
+                      tickLine={false}
+                      axisLine={false}
+                    />
+                    <YAxis
+                      stroke="#94a3b8"
+                      fontSize={11}
+                      tickLine={false}
+                      axisLine={false}
+                      tickFormatter={(value) => `${value}%`}
+                    />
+                    <Tooltip
+                      contentStyle={{ borderRadius: "12px", border: "1px solid #e2e8f0", boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.05)" }}
+                    />
+                    <Area
+                      type="monotone"
+                      dataKey="usage"
+                      stroke="#2563EB"
+                      strokeWidth={2}
+                      fillOpacity={1}
+                      fill="url(#colorUsage)"
+                    />
+                  </AreaChart>
+                </ResponsiveContainer>
+              )}
             </div>
           </CardContent>
         </Card>

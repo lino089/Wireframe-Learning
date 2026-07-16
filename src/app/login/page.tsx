@@ -52,7 +52,7 @@ export default function LoginPage() {
           <form onSubmit={handleLogin} className="space-y-6">
             <div className="space-y-2">
               <Label htmlFor="role">Masuk Sebagai (Simulasi Role) <span className="text-red-500">*</span></Label>
-              <Select defaultValue={role} onValueChange={setRole}>
+              <Select defaultValue={role} onValueChange={(value) => value && setRole(value)}>
                 <SelectTrigger id="role">
                   <SelectValue placeholder="Pilih Role" />
                 </SelectTrigger>

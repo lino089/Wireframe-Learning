@@ -233,9 +233,8 @@ export default function TeknisiPage() {
                 className="pl-9 h-9 bg-slate-50 border-slate-200/80 focus-visible:bg-white rounded-xl text-sm"
               />
             </div>
-            
-            <div className="flex items-center gap-2 w-full sm:w-auto">
-              <Select value={statusFilter} onValueChange={setStatusFilter}>
+                       <div className="flex items-center gap-2 w-full sm:w-auto">
+              <Select value={statusFilter} onValueChange={(value) => value && setStatusFilter(value)}>
                 <SelectTrigger className="h-9 w-[130px] rounded-xl text-xs font-semibold bg-white border-slate-200">
                   <SelectValue placeholder="Status" />
                 </SelectTrigger>
@@ -247,7 +246,7 @@ export default function TeknisiPage() {
                 </SelectContent>
               </Select>
 
-              <Select value={severityFilter} onValueChange={setSeverityFilter}>
+              <Select value={severityFilter} onValueChange={(value) => value && setSeverityFilter(value)}>
                 <SelectTrigger className="h-9 w-[130px] rounded-xl text-xs font-semibold bg-white border-slate-200">
                   <SelectValue placeholder="Prioritas" />
                 </SelectTrigger>
@@ -298,7 +297,7 @@ export default function TeknisiPage() {
                       </Button>
                       <Select 
                         value={item.status} 
-                        onValueChange={(value) => handleStatusChange(item.id, value)}
+                        onValueChange={(value) => value && handleStatusChange(item.id, value)}
                       >
                         <SelectTrigger className="h-8 w-[100px] rounded-lg text-xs font-semibold inline-flex">
                           <SelectValue />
@@ -411,7 +410,7 @@ export default function TeknisiPage() {
                 <label className="text-xs font-bold text-slate-700">Perbarui Status Perbaikan</label>
                 <Select 
                   value={selectedLaporan.status} 
-                  onValueChange={(value) => handleStatusChange(selectedLaporan.id, value)}
+                  onValueChange={(value) => value && handleStatusChange(selectedLaporan.id, value)}
                 >
                   <SelectTrigger className="h-10 rounded-xl font-semibold">
                     <SelectValue />
