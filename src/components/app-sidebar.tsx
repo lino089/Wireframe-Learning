@@ -127,8 +127,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </div>
           {!isCollapsed && (
             <div className="flex flex-col items-start leading-none">
-              <span className="text-slate-900 font-extrabold text-sm tracking-tight">EKOSISTEM</span>
-              <span className="text-blue-600 font-semibold text-xs mt-0.5">SEKOLAH</span>
+              <span className="text-slate-900 font-extrabold text-sm tracking-tight">SMEA</span>
+              <span className="text-blue-600 font-semibold text-xs mt-0.5">Dashboard</span>
             </div>
           )}
         </Link>

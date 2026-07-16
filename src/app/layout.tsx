@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ekosistem Sekolah",
-  description: "Platform terpusat untuk ekosistem sekolah",
+  title: "SMEA Dashboard",
+  description: "Platform terpusat untuk ekosistem sekolah SMEA",
 };
 
 export default function RootLayout({

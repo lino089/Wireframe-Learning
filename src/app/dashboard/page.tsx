@@ -141,39 +141,15 @@ export default function DashboardPage() {
           </CardContent>
         </Card>
 
-        {/* AI Assistant Placeholder & Room Availability */}
+        {/* Room Availability */}
         <div className="col-span-3 space-y-6">
-          {/* AI Assistant Card */}
-          <Card className="border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50 shadow-sm rounded-2xl relative overflow-hidden group">
-            <div className="absolute right-0 bottom-0 w-24 h-24 bg-blue-100/40 rounded-full blur-xl pointer-events-none group-hover:scale-125 transition-transform duration-300"></div>
-            <CardHeader className="pb-3">
-              <div className="flex items-center gap-2 mb-2">
-                <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center">
-                  <Sparkles className="text-white h-4.5 w-4.5" />
-                </div>
-                <CardTitle className="text-sm font-bold text-slate-800">School Assistant AI</CardTitle>
-              </div>
-              <CardDescription className="text-xs text-slate-600 font-medium">
-                Tanya jadwal, analisis ketersediaan ruangan, atau buat agenda baru secara otomatis.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              <div className="bg-white border border-blue-100 rounded-xl p-3 text-xs text-slate-700 shadow-sm">
-                &ldquo;Ruang Rapat Utama kosong hari ini pukul 13:00 - 15:00. Apakah ingin dijadwalkan rapat?&rdquo;
-              </div>
-              <Button size="sm" className="w-full bg-blue-600 hover:bg-blue-500 rounded-xl text-xs font-semibold">
-                Tanya AI Assistant <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
-              </Button>
-            </CardContent>
-          </Card>
-
           {/* Room status simplified */}
           <Card className="border-slate-200/80 shadow-sm rounded-2xl">
             <CardHeader className="pb-3">
               <CardTitle className="text-sm font-bold">Kondisi Fasilitas Ruangan</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3.5">
-              {roomStatus.slice(0, 3).map((room) => (
+              {roomStatus.map((room) => (
                 <div key={room.name} className="flex items-center justify-between text-xs">
                   <div className="space-y-0.5">
                     <p className="font-bold text-slate-800">{room.name}</p>

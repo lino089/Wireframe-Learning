@@ -143,7 +143,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="py-8 bg-slate-950 text-center text-slate-400 text-sm border-t border-slate-800">
-        <p>&copy; 2026 Ekosistem Sekolah. Prototype Version.</p>
+        <p>&copy; 2026 SMEA Dashboard. Prototype Version.</p>
       </footer>
     </div>
   );
